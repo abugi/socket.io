@@ -76,6 +76,16 @@
           <script src="http://code.jquery.com/jquery-latest.min.js"></script>
           <script src="/socket.io/socket.io.js"></script>
           <script>
+               $(function(){
+                    const socket = io.connect();
+                    const $messageForm = $('#messageForm');
+                    const message = $('message');
+                    
+                    $messageForm.submit(function(e){
+                         e.preventDefault();
+                         socket.emit('send message', $message.val());
+                    })
+               })
                
           </script>
      </body>
