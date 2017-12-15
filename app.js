@@ -8,3 +8,6 @@ var  express = require('express'),
      app.get("/", function (req, res) {
           res.sendFile(__dirname + "/index.html");
      });
+
+     //connect to scocket.io
+     
