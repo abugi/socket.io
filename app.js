@@ -12,7 +12,7 @@ var  express = require('express'),
 
      //connect to scocket.io
      io.sockets.on('connection', function(socket){
-          sockets.on('new user', function(data, callback){
+          socket.on('new user', function(data, callback){
               if(username.indexOf(data) != -1){
                    callback = false;
               }else{

@@ -77,10 +77,14 @@
           <script src="/socket.io/socket.io.js"></script>
           <script>
                $(function(){
-                    const socket = io.connect();
-                    const $messageForm = $('#messageForm');
-                    const $message = $('#message');
-                    const $chat = $('#chatWindow');
+                    const socket = io.connect(),
+                     $messageForm = $('#messageForm'),
+                     $message = $('#message'),
+                     $chat = $('#chatWindow'),
+                     $usernameForm = $('#usernameForm'),
+                     $users = $('#users'),
+                     $username = $('#username'),
+                     $error = $('#error'); 
                     
                     $messageForm.submit(function(e){
                          e.preventDefault();
