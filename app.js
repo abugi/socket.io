@@ -24,10 +24,12 @@ var  express = require('express'),
           });
 
           //update Usernames
+          function updateUsernames(){
+               io.sockets.emit('usernames', usernames);
+          }
 
-          
           //send message
           socket.on('send message', function(data){
-               io.sockets.emit('new message', {msg: data});
+               io.sockets.emit('new message', {msg: data, user: socket.username});
           });
      });
