@@ -89,7 +89,7 @@
                     });
 
                     socket.on('new message', function(data){
-                         $chat.append(data.msg);
+                         $chat.append(data.msg + '<br>');
                     });
                });
                
