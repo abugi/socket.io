@@ -10,4 +10,9 @@ var  express = require('express'),
      });
 
      //connect to scocket.io
-     
+     io.sockets.on('connection', function(socket){
+          //send message
+          socket.on('send message', function(data){
+               iio.sockets.emit('new message', {msg: data});
+          });
+     });
