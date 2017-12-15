@@ -32,4 +32,11 @@ var  express = require('express'),
           socket.on('send message', function(data){
                io.sockets.emit('new message', {msg: data, user: socket.username});
           });
+
+          //to clear the usernames when a users disconnect
+          socket.on('send message', function(data){
+               if(!socket.username) return;
+               usernames.splice(usernames.indexOf(socket.username), 1);
+               updateUsernames();
+          });
      });
