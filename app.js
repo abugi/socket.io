@@ -22,6 +22,10 @@ var  express = require('express'),
                    updateUsernames();
               }
           });
+
+          //update Usernames
+
+          
           //send message
           socket.on('send message', function(data){
                io.sockets.emit('new message', {msg: data});
