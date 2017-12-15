@@ -12,7 +12,16 @@ var  express = require('express'),
 
      //connect to scocket.io
      io.sockets.on('connection', function(socket){
-
+          sockets.on('new user', function(data, callback){
+              if(username.indexOf(data) != -1){
+                   callback = false;
+              }else{
+                   callback = true;
+                   socket.username = data;
+                   usernames.push(socket.username);
+                   updateUsernames();
+              }
+          });
           //send message
           socket.on('send message', function(data){
                io.sockets.emit('new message', {msg: data});
