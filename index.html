@@ -14,7 +14,7 @@
                     height: 300px;
                }
                #mainWrapper{
-                    
+                  display: none;  
                }
                #chatWrapper{
                     float: left;
@@ -39,7 +39,6 @@
                     background: #f4f4f4;
                     padding: 10px;
                     margin-left: 20px;
-                    display: none;
                }
                input{
                     height: 30px;
@@ -51,7 +50,7 @@
                <div id="namesWrapper">
                     <h2>Chat IO</h2>
                     <p>Create username: </p>
-                    <form id="userNameForm">
+                    <form id="usernameForm">
                          <input size="35" id="username">
                          <input type="submit" value="submit">
                     </form>
@@ -61,7 +60,6 @@
                     <h2>Chat IO</h2>
                     <div id="chatWrapper">
                          <div id="chatWindow"></div>
-                         <div id="error"></div>
                          <form id="messageForm">
                               <input size="35" id="message" placeholder="Type a message...">
                               <input type="submit" value="Send">
@@ -97,6 +95,7 @@
                                    $error.html('Username is already taken');
                               }
                          });
+                         $username.val('');
                     });
 
                     //to display names of current users in the usernames div
@@ -115,7 +114,7 @@
                     });
 
                     socket.on('new message', function(data){
-                         $chat.append('<strong>: '+ data.user +' </strong>'+ data.msg + '<br>');
+                         $chat.append('<strong> '+ data.user +' </strong>: '+ data.msg + '<br>');
                     });
                });
                

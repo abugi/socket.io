@@ -13,10 +13,10 @@ var  express = require('express'),
      //connect to scocket.io
      io.sockets.on('connection', function(socket){
           socket.on('new user', function(data, callback){
-              if(username.indexOf(data) != -1){
-                   callback = false;
+              if(usernames.indexOf(data) != -1){
+                   callback(false);
               }else{
-                   callback = true;
+                   callback(true);
                    socket.username = data;
                    usernames.push(socket.username);
                    updateUsernames();
@@ -34,7 +34,7 @@ var  express = require('express'),
           });
 
           //to clear the usernames when a users disconnect
-          socket.on('send message', function(data){
+          socket.on('disconnect', function(data){
                if(!socket.username) return;
                usernames.splice(usernames.indexOf(socket.username), 1);
                updateUsernames();
